@@ -1,0 +1,59 @@
+{
+  "name": "tiger-sdk",
+  "version": "0.0.1",
+  "description": "tiger api sdk",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
+  "module": "es6/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "lint": "tslint -p tsconfig.tslint.json src/**/*.ts test/**/*.ts",
+    "prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --list-different \"{src,test}/**/*.ts\"",
+    "fix-prettier": "prettier --no-semi --single-quote --print-width 120 --parser typescript --write \"{src,test,examples,exercises}/**/*.ts\"",
+    "test": "npm run prettier && npm run lint && npm run dtslint && npm run declaration && npm run jest && npm run docs",
+    "clean": "rimraf lib/* es6/*",
+    "build": "npm run clean && tsc && tsc -p tsconfig.es6.json",
+    "prepublish": "npm run build",
+    "perf": "ts-node perf/index",
+    "dtslint": "dtslint dtslint",
+    "declaration": "tsc -p declaration/tsconfig.json",
+    "mocha": "TS_NODE_CACHE=false mocha -r ts-node/register test/*.ts",
+    "doctoc": "doctoc README.md",
+    "docs": "docs-ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hengkx/tiger-sdk.git"
+  },
+  "keywords": [
+    "node",
+    "tiger",
+    "api",
+    "sdk"
+  ],
+  "author": "Tom Xu <ycxzhkx@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hengkx/tiger-sdk/issues"
+  },
+  "homepage": "https://github.com/hengkx/tiger-sdk#readme",
+  "devDependencies": {
+    "@types/moment-timezone": "^0.5.12",
+    "@types/node": "^12.12.5",
+    "@types/request-promise": "^4.1.44",
+    "prettier": "^1.18.2",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.4.1",
+    "tslint": "^6.0.0-beta0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "moment": "^2.24.0",
+    "moment-timezone": "^0.5.27",
+    "request-promise": "^4.2.5"
+  }
+}
